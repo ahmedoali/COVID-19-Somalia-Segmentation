@@ -1,4 +1,3 @@
-
 # Data cleaning -----------------------------------------------------------
 
 # Clear environment
@@ -41,7 +40,7 @@ profiling_data <- merge(profiling_data,COVID[,c(1,183:187)], by = "unique_id")
 
 
 # Input data
-input_data <- profiling_data[,c(1:3,52:55,79:83)]
+input_data <- profiling_data[,c(1:3,29,31,52:55,79:83)]
 
 input_data <- input_data %>%
   mutate(covid_feel_r = recode(covid_feel,`0` = 0,
@@ -83,10 +82,15 @@ input_data <- input_data %>%
          money_misuse_r_2bb = ifelse(money_misuse_r == 1 | money_misuse_r == 2,1,0))
 
 
-input_data <- input_data[,-c(8:12)]
-input_data <- input_data[,-c(8:12)]
+input_data <- input_data[,-c(10:14)]
+input_data <- input_data[,-c(10:14)]
 
 input_data[is.na(input_data)] <- 0
+
+# Add recodes into profiling data
+profiling_data <- profiling_data[,-c(79:83)]
+profiling_data <- merge(input_data[,c(1,10:19)],profiling_data, by = "unique_id")
+profiling_data <- profiling_data[,c(1,12,13,2:11,14:88)]
 
 # Input data - col std
 library(corpcor)
