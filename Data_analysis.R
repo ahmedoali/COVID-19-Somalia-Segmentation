@@ -59,6 +59,7 @@ means <- data.frame(profile_mc, stringsAsFactors = FALSE)[-c(1,19:36,40:59,67:75
   rename(variables = rowname) %>%
   melt(id.vars = "variables", variable.name = "Segments", value.name = "Mean")
 
+rn <- rownames(data.frame(profile_mc, stringsAsFactors = FALSE)[-c(1,19:36,40:59,67:75,79:86),])
 
 p <- means %>%
   ggplot(aes(variables, Mean, group = Segments, color = Segments)) +
