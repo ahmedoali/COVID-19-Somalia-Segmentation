@@ -102,3 +102,4 @@ set.seed(123)
 rows <- sample(nrow(input_data))
 input_data <- input_data[rows,]
 input_data_colstd <- input_data_colstd[rows,]
+profiling_data <- profiling_data[rows,]
