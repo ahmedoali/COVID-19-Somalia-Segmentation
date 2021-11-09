@@ -9,7 +9,7 @@ Data source, World Bank June 2020 survey --> https://microdata.worldbank.org/ind
 All information on sampling methods, sampling size and weighting can be found on the link above.
 
 
-Work currently carried out:
+Current work and findings:
 - Data cleaning/engineering - recoding, standardising and creation of new variables
 - Ran clustering algorithms on selected belief and behaviour variables
 - Observed clusters with differing behaviour and beliefs
