@@ -1,3 +1,4 @@
+
 # Data cleaning -----------------------------------------------------------
 
 # Clear environment
@@ -82,9 +83,7 @@ input_data <- input_data %>%
          money_misuse_r_2bb = ifelse(money_misuse_r == 1 | money_misuse_r == 2,1,0))
 
 
-input_data <- input_data[,-c(10:14)]
-input_data <- input_data[,-c(10:14)]
-
+input_data <- input_data[,-c(10:19)]
 input_data[is.na(input_data)] <- 0
 
 # Add recodes into profiling data
@@ -93,9 +92,22 @@ profiling_data <- merge(input_data[,c(1,10:19)],profiling_data, by = "unique_id"
 profiling_data <- profiling_data[,c(1,12,13,2:11,14:88)]
 
 # Input data - col std
-library(corpcor)
-input_data_colstd <- data.frame(input_data$unique_id,wt.scale(input_data[,-c(1:2)],input_data[,2]
-                              ,center = TRUE,scale = TRUE))
+input_data_colstd <- data.frame("unique_id"=input_data$unique_id
+                                ,apply(input_data[,-c(1:2)],2
+                                       ,function(x) (x - mean(x))/sd(x)))
+
+# Input data - col row std
+input_data_colrowstd <- data.frame("unique_id"=input_data$unique_id
+                                ,t(apply(input_data_colstd[,-1],1
+                                       ,function(x) (x - mean(x))/sd(x))))
+
+# Input data - row col std
+input_data_rowstd <- data.frame("unique_id"=input_data$unique_id
+                                   ,t(apply(input_data[,-c(1:2)],1
+                                            ,function(x) (x - mean(x))/sd(x))))
+input_data_rowcolstd <- data.frame("unique_id"=input_data$unique_id
+                                   ,apply(input_data_colstd[,-1],2
+                                            ,function(x) (x - mean(x))/sd(x)))
 
 # Randomise order
 set.seed(123)
@@ -103,3 +115,6 @@ rows <- sample(nrow(input_data))
 input_data <- input_data[rows,]
 input_data_colstd <- input_data_colstd[rows,]
 profiling_data <- profiling_data[rows,]
+
+# Remove unneeded files
+rm(list = c("profiling_data_dum","columns_to_remove"))
