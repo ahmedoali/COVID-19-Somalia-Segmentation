@@ -92,6 +92,9 @@ profiling_data <- profiling_data[,-c(81:85)]
 profiling_data <- merge(input_data[,c(1,23:37)],profiling_data, by = "unique_id")
 profiling_data <- profiling_data[,c(1,17,18,2:16,19:95)]
 
+# Remove scales and b2b var
+input_data <- input_data[,-c(23:27,33:37)]
+
 # Input data - col std
 input_data_colstd <- data.frame("unique_id"=input_data$unique_id
                                 ,apply(input_data[,-c(1:2)],2
@@ -120,4 +123,4 @@ input_data_rowcolstd <- input_data_rowcolstd[rows,]
 profiling_data <- profiling_data[rows,]
 
 # Remove unneeded files
-rm(list = c("profiling_data_dum","columns_to_remove","columns_to_remove","rows"))
+rm(list = c("profiling_data_dum","columns_to_remove","rows"))
