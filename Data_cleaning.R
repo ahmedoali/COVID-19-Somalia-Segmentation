@@ -113,14 +113,6 @@ input_data_rowcolstd <- data.frame("unique_id"=input_data$unique_id
                                    ,apply(input_data_colstd[,-1],2
                                             ,function(x) (x - mean(x))/sd(x)))
 
-# Randomise order
-set.seed(123)
-rows <- sample(nrow(input_data))
-input_data <- input_data[rows,]
-input_data_colstd <- input_data_colstd[rows,]
-input_data_colrowstd <- input_data_colrowstd[rows,]
-input_data_rowcolstd <- input_data_rowcolstd[rows,]
-profiling_data <- profiling_data[rows,]
 
 # Remove unneeded files
-rm(list = c("profiling_data_dum","columns_to_remove","rows"))
+rm(list = c("profiling_data_dum","columns_to_remove"))
