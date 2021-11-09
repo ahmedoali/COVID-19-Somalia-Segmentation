@@ -23,10 +23,10 @@ profiling_data <- COVID %>%
   filter(itw_result == "complete") %>% 
   dplyr::select(unique_id,CSW,age,state,region,ruralurban,idp_nomad,edu_level,govt_resp_sat,b_wash_hands,b_avoid_handshake,b_avoid_groups,covid_feel,covid_threat,
                 limit_rights,great_risk,money_misuse,flee_home,no_soap,edu_last_week,income_1:income_9,fies_no_food,
-                fies_hungry,fies_no_eat,cope_shock_1:cope_shock_9)
+                fies_hungry,fies_no_eat,cope_shock_1:cope_shock_9,inst_cash,inst_inkind)
 
 profiling_data_dum <- dummy_cols(profiling_data[,-c(1:3,13:17)])
-profiling_data_dum <- profiling_data_dum[,-c(1:33)]
+profiling_data_dum <- profiling_data_dum[,-c(1:35)]
 profiling_data <- cbind(profiling_data[,c(1:3)],profiling_data_dum)
 
 profiling_data[is.na(profiling_data)] <- 0
@@ -41,7 +41,7 @@ profiling_data <- merge(profiling_data,COVID[,c(1,183:187)], by = "unique_id")
 
 
 # Input data
-input_data <- profiling_data[,c(1:3,29,31,52:55,79:83)]
+input_data <- profiling_data[,c(1:3,5:10,29,30,53:58,68:70,79:85)]
 
 input_data <- input_data %>%
   mutate(covid_feel_r = recode(covid_feel,`0` = 0,
@@ -83,13 +83,14 @@ input_data <- input_data %>%
          money_misuse_r_2bb = ifelse(money_misuse_r == 1 | money_misuse_r == 2,1,0))
 
 
-input_data <- input_data[,-c(10:19)]
+input_data <- input_data[,-c(23:27)]
 input_data[is.na(input_data)] <- 0
 
 # Add recodes into profiling data
-profiling_data <- profiling_data[,-c(79:83)]
-profiling_data <- merge(input_data[,c(1,10:19)],profiling_data, by = "unique_id")
-profiling_data <- profiling_data[,c(1,12,13,2:11,14:88)]
+scaled_data <- profiling_data[,c(81:85)]
+profiling_data <- profiling_data[,-c(81:85)]
+profiling_data <- merge(input_data[,c(1,23:37)],profiling_data, by = "unique_id")
+profiling_data <- profiling_data[,c(1,17,18,2:16,19:95)]
 
 # Input data - col std
 input_data_colstd <- data.frame("unique_id"=input_data$unique_id
@@ -114,7 +115,9 @@ set.seed(123)
 rows <- sample(nrow(input_data))
 input_data <- input_data[rows,]
 input_data_colstd <- input_data_colstd[rows,]
+input_data_colrowstd <- input_data_colrowstd[rows,]
+input_data_rowcolstd <- input_data_rowcolstd[rows,]
 profiling_data <- profiling_data[rows,]
 
 # Remove unneeded files
-rm(list = c("profiling_data_dum","columns_to_remove"))
+rm(list = c("profiling_data_dum","columns_to_remove","columns_to_remove","rows"))
