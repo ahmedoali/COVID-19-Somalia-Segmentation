@@ -10,13 +10,12 @@ All information on sampling methods, sampling size and weighting can be found on
 
 
 Work currently carried out:
-- Data cleaning/engineering
+- Data cleaning/engineering - recoding, standardising and creation of new variables
 - Ran clustering algorithms on selected belief and behaviour variables
 - Observed clusters with differing behaviour and beliefs
-- Not a huge amount of variation in answers especially for the scaled opinion questions 
+- Observed a low amount of variation in answers especially for the scaled opinion questions 
 
 Further work:
-- To include more input variables, standardise the variables and observe profiles
 - Run classification models to look at associations between clusters and variables
 - Assess cluster predictability and robustness
 - Write report on policy implications
