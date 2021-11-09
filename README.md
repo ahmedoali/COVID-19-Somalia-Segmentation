@@ -13,6 +13,7 @@ Work currently carried out:
 - Data cleaning/engineering
 - Ran clustering algorithms on selected belief and behaviour variables
 - Observed clusters with differing behaviour and beliefs
+- Not a huge amount of variation in answers especially for the scaled opinion questions 
 
 Further work:
 - To include more input variables, standardise the variables and observe profiles
