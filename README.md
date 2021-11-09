@@ -12,7 +12,7 @@ All information on sampling methods, sampling size and weighting can be found on
 Work currently carried out:
 - Data cleaning/engineering
 - Ran clustering algorithms on selected belief and behaviour variables
-- Observed age differentiated clusters with similar behaviour and beliefs with correlates with known information
+- Observed clusters with differing behaviour and beliefs
 
 Further work:
 - To include more input variables, standardise the variables and observe profiles
