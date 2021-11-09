@@ -1,7 +1,7 @@
 # Results visualisations --------------------------------------------------
 
 library(reshape2)
-means <- data.frame(profile_km_rc, stringsAsFactors = FALSE)[c(7:16,42:44),] %>%
+means <- data.frame(profile_mc, stringsAsFactors = FALSE)[c(7:16,42:44),] %>%
   rownames_to_column() %>%
   rename(variables = rowname) %>%
   melt(id.vars = "variables", variable.name = "Segments", value.name = "Mean") %>%
