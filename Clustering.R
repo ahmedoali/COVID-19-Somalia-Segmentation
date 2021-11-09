@@ -34,7 +34,7 @@ profile_km_rc <- round(t(aggregate(profiling_data[,-c(1:2)], list(k_mean_rc_5$cl
 
 profile_km
 profile_km_cr
-profile_km_rc
+profile_km_rc # Promising
 
 # Mclust
 library(mclust)
@@ -52,16 +52,16 @@ for(i in 3:10){
 } 
 
 profile_mc <- round(t(aggregate(profiling_data[,-c(1:2)], list(mclust_5$classification)
-                                , mean))[-1,],3)
+                                , mean))[-1,],2)
 
-profile_mc <- round(t(aggregate(profiling_data[,-c(1:2)], list(mclust_cr_5$classification)
-                                , mean))[-1,],3)
+profile_mc_cr <- round(t(aggregate(profiling_data[,-c(1:2)], list(mclust_cr_5$classification)
+                                , mean))[-1,],2)
 
-profile_mc <- round(t(aggregate(profiling_data[,-c(1:2)], list(mclust_rc_5$classification)
-                                , mean))[-1,],3)
+profile_mc_rc <- round(t(aggregate(profiling_data[,-c(1:2)], list(mclust_rc_5$classification)
+                                , mean))[-1,],2)
 
-profile_mc
-profile_mc_cr
+profile_mc # Promising
+profile_mc_cr # Promising
 profile_mc_rc
 
 # HCL
@@ -76,17 +76,11 @@ hcl_cr <- hclust(distance_cr, method = "ward.D2")
 profile_hcl <- round(t(aggregate(profiling_data[,-c(1:2)], list(cutree(as.hclust(hcl), 1:10)[,5])
                                  ,mean))[-1,],2)
 
-profile_hcl <- round(t(aggregate(profiling_data[,-c(1:2)], list(cutree(as.hclust(hcl_cr), 1:10)[,5])
+profile_hcl_cr <- round(t(aggregate(profiling_data[,-c(1:2)], list(cutree(as.hclust(hcl_cr), 1:10)[,5])
                                  ,mean))[-1,],2)
-profile_hcl <- round(t(aggregate(profiling_data[,-c(1:2)], list(cutree(as.hclust(hcl_rc), 1:10)[,5])
+profile_hcl_rc <- round(t(aggregate(profiling_data[,-c(1:2)], list(cutree(as.hclust(hcl_rc), 1:10)[,5])
                                  ,mean))[-1,],2)
 
-profile_hcl
+profile_hcl # Promising
 profile_hcl_rc 
 profile_hcl_cr
-
-opar <- par(mar = c(4.1, 1, 1, 12))
-plot(as.dendrogram(hcl), horiz = TRUE, type = "triangle",
-     xlab = "Height")
-par(opar)
-
