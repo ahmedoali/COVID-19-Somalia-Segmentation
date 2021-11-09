@@ -1,4 +1,4 @@
-# Attitudes-and-behavioural-segmentation-for-COVID-19-in-Somalia
+# COVID-19-Somalia-Segmentation
 
 A people based segmentation on COVID-19 around attitudes and behaviours of Somalis. 
 
@@ -8,12 +8,12 @@ All information on sampling methods, sampling size and weighting can be found on
 
 
 Work currently carried out:
-1 - Data cleaning/engineering
-2 - Ran clustering algorithms on selected belief and behaviour variables
-3 - Observed age differentiated clusters with similar behaviour and beliefs with correlates with known information
+- Data cleaning/engineering
+- Ran clustering algorithms on selected belief and behaviour variables
+- Observed age differentiated clusters with similar behaviour and beliefs with correlates with known information
 
 Further work:
-1 - To include more input variables, standardise the variables and observe profiles
-2 - Run classification models to look at associations between clusters and variables
-3 - Assess cluster predictability and robustness
-4 - Write report on policy implications
+- To include more input variables, standardise the variables and observe profiles
+- Run classification models to look at associations between clusters and variables
+- Assess cluster predictability and robustness
+- Write report on policy implications
