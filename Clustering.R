@@ -9,17 +9,17 @@
 # Kmeans
 for(i in 3:10){
   assign(paste0("k_mean_",i),kmeans(input_data[,-c(1:3)]
-                                    ,centers = i,nstart = 50))
+                                    ,centers = i,iter.max = 1000,nstart = 50))
 }
 
 for(i in 3:10){
   assign(paste0("k_mean_cr_",i),kmeans(input_data_colrowstd[,-c(1:2)]
-                                           ,centers = i,nstart = 50))
+                                           ,centers = i,iter.max = 1000,nstart = 50))
 }
 
 for(i in 3:10){
   assign(paste0("k_mean_rc_",i),kmeans(input_data_rowcolstd[,-c(1:2)]
-                                           ,centers = i,nstart = 50))
+                                           ,centers = i,iter.max = 1000,nstart = 50))
 }
 
 
