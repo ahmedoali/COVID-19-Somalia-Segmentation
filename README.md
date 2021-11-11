@@ -16,6 +16,7 @@ Current work and findings:
 - Observed a low amount of variation in answers especially for the scaled opinion questions 
 
 Further work:
+- Check values are correct and set seeds for replicability
 - Run classification models to look at associations between clusters and variables
 - Assess cluster predictability and robustness
-- Write report on policy implications
+- Write report on findings and policy implications
